@@ -1,0 +1,73 @@
+.settings{
+  width: 50vw;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 1em;
+  box-shadow: 8px 8px 6px -6px black;
+  border-radius: 1em 1em 1em 1em;
+  filter: hue-rotate(22deg);
+  .settingsForm {
+    display: table;
+    -webkit-border-vertical-spacing: 1.5em;
+    margin: auto;
+    width: 65%;
+    .formAttribute {
+      display: table-row;
+      font-size: 2em;
+      .attributeDesc {
+        display: table-cell;
+        text-align: left;
+        width: 50%;
+        vertical-align: bottom;
+      }
+      .attributeValue {
+        display: table-cell;
+        text-align: left;
+        vertical-align: bottom;
+        input{
+          font-family: inherit;
+          font-size: inherit;
+          background-color: inherit;
+          color: white;
+          box-sizing: border-box;
+          border-style: none;
+          border-bottom-style: solid;
+          border-bottom-color: white;
+          padding-left: 0.25em;
+          width: 100%;
+        }
+        select{
+          border-top: none white;
+          border-right: none white;
+          border-left: none white;
+          border-bottom: 0.25em solid white;
+          height: 2em;
+          width: 100%;
+        }
+        input:focus{
+          border-style: none;
+        }
+      }
+    }
+  }
+  .applyButton {
+    margin-top: 2em;
+    display: block;
+    text-align: center;
+    input {
+      background-color: inherit;
+      box-sizing: border-box;
+      border-color: black;
+      border-radius: 1px;
+      font-family: inherit;
+      color: white;
+      font-size: 3em;
+
+    }
+    input:hover{
+      cursor: pointer;
+      background-color: black;
+      transition: background-color 1s linear;
+    }
+  }
+}

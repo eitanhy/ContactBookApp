@@ -1,0 +1,87 @@
+{
+  "name": "contactbook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "home.js",
+  "private": true,
+  "dependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-0": "^7.0.0",
+    "@material-ui/core": "^3.1.0",
+    "@material-ui/icons": "^3.0.1",
+    "autoprefixer": "^9.1.5",
+    "axios": "^0.18.0",
+    "babel-loader": "^8.0.2",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "bootstrap": "^4.1.3",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "cookies": "^0.7.2",
+    "css-loader": "^1.0.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "express-ws": "^4.0.0",
+    "extract-loader": "^3.0.0",
+    "file-loader": "^2.0.0",
+    "lodash": "^4.17.11",
+    "node-sass": "^4.9.3",
+    "npm": "^6.4.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "postcss-loader": "^3.0.0",
+    "precss": "^3.1.2",
+    "react": "^16.5.1",
+    "react-addons-update": "^15.6.2",
+    "react-dom": "^16.5.1",
+    "react-redux": "^5.0.7",
+    "redis": "^2.8.0",
+    "redux": "^4.0.0",
+    "sass-loader": "^7.1.0",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
+    "style-loader": "^0.23.0",
+    "typeface-roboto": "0.0.54",
+    "uuid": "^3.3.2",
+    "ws": "^6.1.0",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "webpack": "^4.19.0",
+    "webpack-cli": "^3.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": [
+      "server.js",
+      "webpack-dev-server"
+    ]
+  },
+  "author": "Eitan Hyams",
+  "license": "ISC",
+  "customParams": {
+    "username": "nodeuser",
+    "pass": "nodeuser",
+    "dbPort": "5984",
+    "dbHost": "localhost",
+    "dbNames": {
+      "users": "users",
+      "messages": "messages",
+      "contactbooks": "contactbooks",
+      "persons": "persons",
+      "conversations": "conversations"
+    },
+    "redis": {
+      "host": "localhost",
+      "port": "6379",
+      "pass": "redis",
+      "expiration": 600
+    }
+  }
+}
