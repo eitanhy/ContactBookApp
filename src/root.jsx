@@ -22,7 +22,7 @@ export default class Root extends React.Component {
         super(props);
         // Check if root page is a redirect from login
         this.fakeSignIn.bind(this);
-        this.fakeSignIn();
+        //this.fakeSignIn();
     }
 
 
