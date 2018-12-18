@@ -1,5 +1,6 @@
 import React from 'react';
 
+// UI SVG Componennt
 export default class MessagesLogo extends React.Component{
     render(){
         return <svg

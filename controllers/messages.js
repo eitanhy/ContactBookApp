@@ -1,3 +1,5 @@
+// API for messages
+
 var dbFuncs =  module.parent.exports.dbFuncs,
     dbNames = module.parent.exports.consts.customParams.dbNames,
     app = module.parent.exports.app,
@@ -61,7 +63,7 @@ app.post("/messages/:conversationID", function(req,res){
 });
 
 
-app.get("/messages/:conversationID", function(req,res){
+app.get("/api/messages/:conversationID", function(req,res){
     dbFuncs.queryDB(dbNames.conversations,{_id:req.params.conversationID},["messages"]).then((response) => {
          res.send(response.docs[0].messages);
 })});

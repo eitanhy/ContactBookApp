@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card'
 import LoginForm from './loginForm.jsx';
 import styles from '../styles/_login.scss'
 import Context from './appContext'
+
 // represents the Home Card component holding login & sign up forms
 
 export default class Login extends React.Component {

@@ -21,11 +21,11 @@ export default class Root extends React.Component {
     constructor(props){
         super(props);
         // Check if root page is a redirect from login
-        this.fakeSignIn.bind(this);
+        //this.fakeSignIn.bind(this);
         //this.fakeSignIn();
     }
 
-
+    // used for tesing
     fakeSignIn(){
         let result = axios.post('/login',{username:'eitan',password: 'eitan'}, {withCredentials: true}).then(function (response) {
             axios.get('/users/' + response.data).then(function (userResponse) {
@@ -36,8 +36,8 @@ export default class Root extends React.Component {
         }.bind(this)).catch(function (error) {
         }.bind(this));
     }
+
     render(){
-        console.log(this);
         // Present Signup & Login forms with material-ui theme
         if (!this.props.state) {
             return <MuiThemeProvider theme={loginTheme}>
@@ -46,12 +46,14 @@ export default class Root extends React.Component {
         }
 
         // Redirect to the GUI - with updated context with logged in user details
+        // --- after a succesful login the store is updated and the app is rendered
         else{
             return <Home store={this.props.store}/>;
         }
     }
 }
 
+// Connect the root component to the state mapper
 const RootComponent = connect(mapStateToProps)(Root);
 
 ReactDOM.render(<RootComponent store={appStore}/>,document.getElementById("root"));

@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 
 module.exports = [{
-    entry: ['babel-polyfill', './src/root.jsx'],
+    entry: ['babel-polyfill', './src/pages/Root.jsx'],
     output: {
         filename: 'home.js',
         path: path.resolve(__dirname, 'dist'),
@@ -23,7 +23,7 @@ module.exports = [{
             use: ['babel-loader']
         },
         {
-            test: /\.scss$/,
+            test: /\.(scss|css)$/,
             use: [
                 {
                     loader: 'style-loader',

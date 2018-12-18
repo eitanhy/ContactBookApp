@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/accountsettings.scss'
-import {insertUserState, mapStateToProps} from "./redux/actions/userActions";
+import {insertUserState, mapStateToProps} from "../redux/actions/userActions";
 import {connect} from 'react-redux';
 import axios from 'axios';
 export default class AccountSettings extends React.Component{
@@ -8,11 +8,15 @@ export default class AccountSettings extends React.Component{
         super(props);
         this.onApply = this.onApply.bind(this);
         this.onColorSelect = this.onColorSelect.bind(this);
+
+        // state for color update on setting screen
         this.state = {skinColor : this.props.state.settings.primaryColor,
         userColor : this.props.state.settings.primaryColor};
     }
+
+    // Update user with API Call + Redux Store dispacth for current session
     onApply(){
-        console.log(this.props);
+        
         let requestBody ={
             username: document.getElementById("username").value,
             email: document.getElementById("email").value,
@@ -70,10 +74,10 @@ export default class AccountSettings extends React.Component{
                             </div>
                             <div className={"attributeValue"}>
                                 <select id={"color"} style={{backgroundColor: this.state.skinColor}} onChange={(e) => this.onColorSelect(e)}>
-                                    <option value={"black"} style={{backgroundColor: 'black'}}></option>
-                                    <option value={"red"} style={{backgroundColor: 'red'}}></option>
-                                    <option value={"blue"} style={{backgroundColor: 'blue'}}></option>
-                                    <option value={"purple"} style={{backgroundColor: 'purple'}}></option>
+                                    <option value={"#111111"} style={{backgroundColor: 'black'}}></option>
+                                    <option value={"#FF4136"} style={{backgroundColor: 'red'}}></option>
+                                    <option value={"#0074D9"} style={{backgroundColor: 'blue'}}></option>
+                                    <option value={"#85144b"} style={{backgroundColor: 'purple'}}></option>
                                 </select>
                             </div>
                         </div>

@@ -1,5 +1,5 @@
 'use strict';
-import loginTheme from './material/loginTheme.jsx';
+import loginTheme from '../material/loginTheme.jsx';
 import { MuiThemeProvider,createMuiTheme } from '@material-ui/core/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import Fade from '@material-ui/core/Fade';
 import Home from './root.jsx';
 import LoginForm from "./loginForm";
-import {fieldInvalid,fieldValid,clearSignup} from "./redux/actions/signupActions";
+import {fieldInvalid,fieldValid,clearSignup} from "../redux/actions/signupActions";
 import InvalidField from './InvalidField';
 import axios from "axios/index";
 import Context from './appContext'
@@ -22,7 +22,7 @@ const DELETE='DELETE';
 export default class SignUp extends React.Component {
     constructor(props){
         super(props);
-        //
+        // component state used for handling enabling & disabling of submit and confirm pass
         this.state = {confirmPassDisabled : true,submitDisabled: true,
                 blankFields:new Set(['username','password','confirmPassword','firstname','lastname','email'])
                     };
@@ -39,6 +39,8 @@ export default class SignUp extends React.Component {
         this.store.dispatch(clearSignup());
         ReactDOM.render(<MuiThemeProvider theme={loginTheme}><LoginForm store={this.store} postSignup ={isPostSignup}/></MuiThemeProvider>,document.getElementById("authForm"));
     }
+
+    // Validator for username
     async onUsernameChange(e){
         if (e.target.value.length > 5){
             this.store.dispatch(fieldValid('username'));
@@ -51,6 +53,7 @@ export default class SignUp extends React.Component {
         }
     }
 
+    // Validator for password
     async onPassChange(e){
         if (e.target.value.length <= 5){
             // Show Error
@@ -84,6 +87,7 @@ export default class SignUp extends React.Component {
         }
     }
 
+    // Validator for pass confirmation
     async onPassConfirmChange(e){
 
         if (e.target.value != document.getElementById('password').value){
@@ -96,6 +100,7 @@ export default class SignUp extends React.Component {
         }
     }
 
+    // Validator for name changes
     async onNameChange(e){
 
         if (e.target.value.length > 0){
@@ -108,6 +113,7 @@ export default class SignUp extends React.Component {
         }
     }
 
+    // Email validator with regex
     async onEmailChange(e){
         let regExp = new RegExp(/[^@]*@[\w\d.-]*\.[a-z]*$/);
         if (regExp.test(e.target.value)){
@@ -119,6 +125,8 @@ export default class SignUp extends React.Component {
             return {command: ADD,id: e.target.id};
         }
     }
+
+    // Phone validator with regex
     async onPhoneChange(e){
         let regExp = new RegExp(/\+?\d+\-?\d+\-?\d{6,9}/);
         if (regExp.test(e.target.value)){
@@ -135,7 +143,7 @@ export default class SignUp extends React.Component {
         }
     }
 
-
+    // Manages the local component state
     handleRequiredFields(data){
         let command = data.command;
         let id = data.id
@@ -153,6 +161,7 @@ export default class SignUp extends React.Component {
         this.setState({blankFields: blankFields});
     }
 
+    // Posts user creation
     async onSubmit(){
         let body = {
             username: document.getElementById("username").value,

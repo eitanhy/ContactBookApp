@@ -1,5 +1,8 @@
 'use strict';
 
+// Api for user data & authorization
+// TODO: seperate
+
 // used for mapping new endpoints
 var app = module.parent.exports.app,
     express = module.parent.exports.express,
@@ -10,7 +13,6 @@ var app = module.parent.exports.app,
     io = module.parent.exports.io,
     dbFuncs =  module.parent.exports.dbFuncs,
     dbNames = module.parent.exports.consts.customParams.dbNames;
-    //expressWs = require('express-ws')(app,server);
 
 var userSocketNs = io.of('userstream');
 
@@ -67,7 +69,7 @@ passport.deserializeUser(async function(token,done){
 
 // Succesful Login = returns user id
 // Failure in Login = 401 HTTP ERROR
-module.parent.exports.app.post('/login/',
+module.parent.exports.app.post('/api/login/',
     passport.authenticate('local'),
     function (req,res) {
     console.log("in!");
@@ -75,6 +77,22 @@ module.parent.exports.app.post('/login/',
     }
 );
 
+
+module.parent.exports.app.post('/api/sso/',
+    function (req,res) {
+    console.log("in!");
+        let uid = req.session.passport.user;
+        let userId = req.body.userId;
+        redisClient.get(uid, function (err,result){
+            if (err || result != userId){
+                res.status(401).end();
+            }
+            res.end();
+        })
+    }
+);
+
+/* To be used as a middleware funciton for authorizing users in the API*/
 var customAuthorization = function(req,res,next){
     redisClient.get(req.session.passport.user,  function (err,result) {
         if (err || result != req.params.userid){
@@ -139,7 +157,7 @@ module.parent.exports.app.post('/users',async function(req, res) {
 });
 
 // Return user state without the password
-module.parent.exports.app.get('/users/:userid', async function(req,res) {
+module.parent.exports.app.get('/api/users/:userid', async function(req,res) {
    let result = await dbFuncs.getDoc(dbNames.users,req.params.userid)
     delete result.password;
     res.send(result);

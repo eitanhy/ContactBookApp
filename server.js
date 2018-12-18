@@ -30,9 +30,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({secret: 'secret'}));
+
+// create the server with current application configuration
+// TODO: Consider to create the server later, after app configuration
 var server = https.createServer(ssloptions,app);
 var io = require('socket.io').listen(server);
-
 server.listen(443);
 console.log('todo list RESTful API server started on: ' + port);
 
@@ -53,9 +55,12 @@ require("./controllers/usersController");
 require("./controllers/conversations");
 require("./controllers/messages");
 
+// Returns the main page
+app.get("/:page",(req,res) => res.sendFile('dist/index.html', { root: __dirname }));
 app.get("/",(req,res) => res.sendFile('dist/index.html', { root: __dirname }));
 
 
+// Returns webpack bundled js files
 app.get('/dist/:fileName', async function(req,res) {
     fs.readFile(`dist/${req.params.fileName}`,function (error,data) {
         if (!error){
@@ -65,7 +70,8 @@ app.get('/dist/:fileName', async function(req,res) {
     })
 });
 
-app.get('/dist/styles/:fileName', async function(req,res) {
+// Returns svg + css files
+app.get('/styles/:fileName', async function(req,res) {
     fs.readFile(`dist/styles/${req.params.fileName}`,function (error,data) {
         if (!error){
             if (req.params.fileName.endsWith('.svg')) {
@@ -79,6 +85,18 @@ app.get('/dist/styles/:fileName', async function(req,res) {
     })
 });
 
+app.get('/images/:fileName', async function(req,res) {
+    fs.readFile(`dist/images/${req.params.fileName}`,function (error,data) {
+        if (!error){
+            if (req.params.fileName.endsWith('.jpg')) {
+                res.setHeader('Content-Type','image/jpeg');
+            }
+            res.end(data);
+        }
+    })
+});
+
+// Returns fonts
 app.get('/dist/styles/fonts/:fileName', async function(req,res) {
     fs.readFile(`dist/styles/${req.params.fileName}`,function (error,data) {
         if (!error){

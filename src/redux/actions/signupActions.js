@@ -1,3 +1,5 @@
+// Signup form actions
+
 import {CLEAR_SIGNUP,FIELD_OK,FIELD_INVALID} from './actionTypes'
 
 

@@ -1,6 +1,6 @@
 'use strict';
 
-import loginTheme from "./material/loginTheme";
+import loginTheme from "../material/loginTheme";
 import ReactDOM from "react-dom";
 import React from 'react';
 import axios from 'axios';
@@ -14,9 +14,11 @@ import SignUp from './signup.jsx';
 import Fade from '@material-ui/core/Fade';
 import { MuiThemeProvider,createMuiTheme } from '@material-ui/core/styles';
 import Context from './appContext'
-import {insertUserState} from './redux/actions/userActions'
+import {insertUserState} from '../redux/actions/userActions'
 import Root from './root'
 
+
+// The login form
 export default class LoginForm extends React.Component{
     constructor(props){
         super(props);
@@ -32,6 +34,8 @@ export default class LoginForm extends React.Component{
         this.onInputText = this.onInputText.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
+
+    // Post login credentials
     onSubmit(){
         let username = document.getElementById("username").value;
         let password = document.getElementById("pass").value;
@@ -51,6 +55,8 @@ export default class LoginForm extends React.Component{
             }
         }.bind(this));
     }
+
+    // input text behaviour, enables \ disables login submission
     onInputText(){
         let username = document.getElementById("username").value;
         let password = document.getElementById("pass").value;
@@ -62,6 +68,7 @@ export default class LoginForm extends React.Component{
         }
     }
 
+    // Redirect to signup if selected
     onSignUpClick(){
         ReactDOM.render(<Context.Consumer>
             {(context) => <MuiThemeProvider theme={loginTheme}><SignUp store={context.store}/></MuiThemeProvider>}
@@ -74,6 +81,7 @@ export default class LoginForm extends React.Component{
                 <FormLabel className={'formLabel'}>
                     Login
                 </FormLabel>
+                {/* 2 hidden divs for errors*/}
                 <div className={"postSignupLogin"} style={ {display : this.state.postSignup}}>Please enter your new Username & Password</div>
                 <div id={"authError"} className={this.state.errorClass}>Incorrect username password</div>
                 <TextField id={"username"} label={'User Name'} onChange={this.onInputText}/>

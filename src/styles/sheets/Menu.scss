@@ -1,0 +1,29 @@
+nav{
+    color: white;
+    height: 3rem;
+    img{
+        height: 3rem;
+    }
+    li{
+        cursor: pointer;
+        padding: 0.5rem;
+        margin-left: 0.3rem;
+        border-radius: 1rem;
+    }
+    li:hover{
+        background-color: black;
+        transition: background-color 0.5s ease-in;
+    }
+    button{
+        float: right;
+    }
+    a{
+        color: inherit;
+        display: block;
+    }
+    a:hover{
+        text-decoration: none;
+        color: inherit;
+    }
+
+}

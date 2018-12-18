@@ -1,5 +1,5 @@
 /*
-Function for querying couchDB
+Functions for querying couchDB
 */
 'use strict';
 const user = module.parent.exports.consts.customParams.username;

@@ -1,0 +1,70 @@
+.loginCard{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  width: 45vw;
+  font-family: 'Montserrat', sans-serif;
+  .loginLogoHeader{
+    border-bottom: 0.1em solid white;
+    .loginLogoText{
+      font-size: 2em;
+      font-weight: bold;
+      vertical-align: bottom;
+    }
+
+    .loginLogo{
+      font-size:4em;
+      font-style: normal;
+      vertical-align: bottom;
+    }
+  }
+  #authForm {
+    .loginForm {
+      .formLabel {
+        font-size: 2em;
+        font-family: inherit;
+      }
+      .postSignupLogin{
+        font-weight: bold;
+        max-height: 0px;
+        font-size: larger;
+      }
+      .authErrorHidden{
+        color: red;
+        font-weight: bold;
+        max-height: 0px;
+        overflow: hidden;
+        font-size: larger;
+      }
+      .authErrorVisible{
+        color: red;
+        font-weight: bold;
+        max-height: 1rem;
+        transition: max-height 2s ease-in;
+      }
+      .signupInvalidHidden{
+        color: red;
+        font-weight: bold;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 1s ease-out;
+      }
+      .signupInvalidVisible{
+        color: red;
+        font-weight: bold;
+        max-height: 1rem;
+        transition: max-height 1s ease-in;
+      }
+
+      .submitButton {
+        margin-top: 0.5rem;
+        font-size: 1.25em;
+        margin-right: auto;
+        margin-left: auto;
+        font-family: inherit;
+      }
+    }
+  }
+}

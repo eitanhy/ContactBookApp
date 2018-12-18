@@ -10,7 +10,7 @@ const loginTheme = createMuiTheme({
         type: 'dark'
     },
     typography: {
-        fontFamily: 'Simplifica',
+        fontFamily: 'Montserrat',
         fontSize: 24
     }
 });

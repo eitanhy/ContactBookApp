@@ -1,0 +1,79 @@
+.ConversationContainer{
+    height: 85vh;
+    overflow: hidden;
+    padding: 0;
+    .AddButton{
+        height: 2.5rem;
+        text-align: center;
+        cursor: pointer;
+        span{
+            color: limegreen;
+            font-size: 0.9rem;
+            vertical-align: -webkit-baseline-middle;
+            font-weight: bold;
+        }
+    }
+    .AddButton:hover{
+        text-decoration: underline;
+        text-decoration-color: inherit;
+    }
+    .ConversationList{
+        position: absolute;
+        bottom: 1px;
+        top: 2.9rem;
+        overflow: auto;
+        direction: rtl;
+        padding-left: 0.5rem;
+        .ConversationItem{
+            direction: ltr;
+            height: 5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 1rem;
+            padding-top: 0.5rem;
+            cursor: pointer;
+            .ConversationDate{
+                font-size: 0.8rem;
+                font-style: oblique;
+            }
+            .ConversationWith{
+                font-size: 0.8rem;
+            }
+            .LatestMessage{
+                font-size: 1.5rem;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
+.ChatContainer{
+    width:83%;
+    .ChatCard{
+        height: 85vh;
+        border-top: 0;
+        .CardHeader{
+            font-size: 1.75rem;
+            letter-spacing: 0.2rem;
+            height: 2.5rem;
+        }
+        .ChatBody{
+            overflow: auto;
+            height: 85%;
+            padding-left: 0.6rem;
+        }
+        .TextArea{
+            height: 3.75rem;
+            padding: 0.5rem 0.5rem;
+            border-top: black 1px solid;
+            input{
+                width: 80%;
+                height: 95%;
+            }
+            button{
+                width: 19%;
+                height: 95%;
+            }
+        }
+
+    }
+}
