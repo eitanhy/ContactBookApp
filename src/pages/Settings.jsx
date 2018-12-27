@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import BasicInfo from '../UIComponents/BasicInformation';
 import PassForm from '../UIComponents/PasswordForm';
 import '../styles/sheets/Settings.scss';
@@ -17,6 +16,7 @@ const SettingMenu = function(props){
     </ul>;
 }
 
+// User Settings Component, renders selected tab using its state
 class Settings extends React.Component{
     constructor(props){
         super(props);
@@ -39,8 +39,8 @@ class Settings extends React.Component{
     render(){
         return <div id='Settings' className="w-50 mx-auto border">
                 <SettingMenu options={[
-                    {title: 'Basic Information', onClick: this.toggleForm.bind(this,['Basic'])},
-                    {title:'Password', onClick: this.toggleForm.bind(this,['Password'])}
+                    {title: 'Basic Information', onClick: this.toggleForm.bind(this,'Basic')},
+                    {title:'Password', onClick: this.toggleForm.bind(this,'Password')}
                 ]} />
                 
                 {this.formRouter.call(this,this.state.toggled)}

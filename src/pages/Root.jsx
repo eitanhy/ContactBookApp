@@ -11,6 +11,8 @@ import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/sheets/Root.scss'
 
+
+// Root component
 class Root extends Component{
     constructor(props){
         super(props);
@@ -18,6 +20,7 @@ class Root extends Component{
     }
 
     componentDidMount(){
+        // Try to login with previous session
         if ((!this.props.state || !this.props.state.isAuthenticated) && this.props.location.pathname != '/login'
             && localStorage.getItem('userId')){
             this.props.dispatchUserSSO();

@@ -14,8 +14,17 @@ var app = module.parent.exports.app,
     dbFuncs =  module.parent.exports.dbFuncs,
     dbNames = module.parent.exports.consts.customParams.dbNames;
 
+
+// This socket will be used for searching users during conversation creation
 var userSocketNs = io.of('userstream');
 
+userSocketNs.on('connect',(socket)=> {
+    socket.on('message', function (data) {
+        dbFuncs.getDocStartsWith(dbNames.users, "username", data, ['username', '_id'],5).then(function (result) {
+            socket.emit('message', JSON.stringify(result.docs));
+        });
+    })
+});
 
 const uuidv4 = require('uuid/v4');
 const redisExpirationInterval = module.parent.exports.consts.customParams.redis.expiration;
@@ -31,6 +40,7 @@ redisClient.on('connect', function() {
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Passport regular authentication policy
 passport.use(new LocalStrategy(
     async function(username, password, done) {
         let query = {};
@@ -77,8 +87,8 @@ module.parent.exports.app.post('/api/login/',
     }
 );
 
-
-module.parent.exports.app.post('/api/sso/',
+// Used for login using Auth cookie
+module.parent.exports.app.post('/api/session/',
     function (req,res) {
     console.log("in!");
         let uid = req.session.passport.user;
@@ -123,24 +133,8 @@ module.parent.exports.app.get('/users/existence', async function(req,res) {
     res.end(false);
 });
 
-/*
-app.ws('/friendstream', function (ws,res) {
-    ws.on('message', function(data){
-        //generate an ID for this socket
-        // Save socket in map
-        // Send initial data through socket
 
-        })
-    });
-}); */
 
-userSocketNs.on('connect',(socket)=> {
-    socket.on('message', function (data) {
-        dbFuncs.getDocStartsWith(dbNames.users, "username", data, ['username', '_id'],5).then(function (result) {
-            socket.emit('message', JSON.stringify(result.docs));
-        });
-    })
-});
 
 
 // Update function - retrieves the existing document and modifies specific updated values
@@ -168,4 +162,6 @@ module.parent.exports.app.delete('/users/:userid', async function(req,res) {
     let result = await dbFuncs.deleteDoc(dbNames.users,req.params.userid)
     res.send(result);
 });
+
+
 

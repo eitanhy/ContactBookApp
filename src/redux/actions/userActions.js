@@ -1,11 +1,6 @@
 import {USER_LOGOUT,USER_LOGIN,INSERT_USER_STATE} from './actionTypes'
-import axios from "axios/index";
-// Handles new actions & updates the state accordingly
 
-
-// Process the state given by the userState reducer
-
-
+// actions & middleware for user operations
 
 function loginUser(){
     return{

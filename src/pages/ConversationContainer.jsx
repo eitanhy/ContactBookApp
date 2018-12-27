@@ -5,6 +5,7 @@ import ConversationList from '../UIComponents/ConversationList';
 import AddButton from '../UIComponents/AddButton';
 
 
+// Component which holds the conversation top data and the conversation list
 export default class ConversationContainer extends PureComponent{
     constructor(props){
         super(props);

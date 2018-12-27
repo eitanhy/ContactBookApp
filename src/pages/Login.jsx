@@ -1,13 +1,14 @@
 import React from 'react';
 import BasicForm from '../UIComponents/BasicSettingForm'
-import {Redirect} from 'react-router';
 import '../styles/sheets/Login.scss';
-import {userLoginActionHandler} from '../redux/actions/userActions'
 
+
+
+// Authenticate using redux middelware
 const Authenticate = function (dispatch){
     dispatch(document.getElementById('username').value,document.getElementById('password').value);
 };
-
+// Represents the login page card
 const LoginPage = (props) => {
     return  <div className="card w-50 mx-auto mt-2">
         <div className='bg-dark'>

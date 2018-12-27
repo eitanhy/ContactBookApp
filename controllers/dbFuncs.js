@@ -7,6 +7,7 @@ const pass = module.parent.exports.consts.customParams.pass;
 
 var axios = require('axios');
 
+// Authentication Cookie used for authorization to CouchDB API
 var AuthCookie = null;
 
 
@@ -57,6 +58,7 @@ async function getDoc(dbName,docId){
     });
 };
 
+// Append an array attribute
 async function appendArrayAttribute(dbName,docId,key,value){
     await getDoc(dbName,docId).then(async function(result){
         if (!result[key]){
@@ -69,7 +71,7 @@ async function appendArrayAttribute(dbName,docId,key,value){
     });
 }
 
-// update a document
+// Update a document
 async function updateDoc(dbName, docId,updateAttrs){
 
     let newData = await getDoc(dbName,docId);
@@ -92,7 +94,7 @@ async function updateDoc(dbName, docId,updateAttrs){
     });
 };
 
-// create a document
+// Create a document
 async function createDoc(dbName, createAttrs){
     let post_options = {
         url : `http://${module.parent.exports.consts.customParams.dbHost}:${module.parent.exports.consts.customParams.dbPort}/${dbName}`,

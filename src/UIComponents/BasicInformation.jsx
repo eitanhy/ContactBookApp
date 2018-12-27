@@ -1,7 +1,7 @@
 import React from 'react';
 import BasicSettingForm from './BasicSettingForm';
 
-
+// Basic Information Settings Form
 const BasicInformation = props =>{
     return <BasicSettingForm fields={[
         {name:'first',description:'First Name', type:'text' ,value: props.userState.firstname},

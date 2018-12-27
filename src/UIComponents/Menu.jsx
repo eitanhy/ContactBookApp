@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import '../styles/sheets/Menu.scss';
 
-
+// Adjustable menu options
 const MenuOptions = function(props){
 
     return <div className="collapse navbar-collapse">        
@@ -17,6 +17,7 @@ const MenuOptions = function(props){
     
 }
 
+// Menu Nav Bar
 const Menu = function (props){
     return <nav className="navbar navbar-dark bg-dark navbar-expand-lg navbar-expand-sm">
         <div className="navbar-brand">

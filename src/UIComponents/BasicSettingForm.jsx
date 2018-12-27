@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Adjustable form for settings & login
 const BasicSettingForm = props=>{
     return <div className="form-group">
     {props.fields.map(field => {
