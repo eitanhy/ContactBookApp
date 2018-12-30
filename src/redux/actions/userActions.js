@@ -71,7 +71,7 @@ export function userLoginActionHandler(username,password){
 
 export function userSSOActionHandler(){
     return async function(dispatch, getState){
-        fetch('/api/sso',{
+        fetch('/api/session',{
             credentials: 'include',
             method: 'POST',
             mode: "cors",
